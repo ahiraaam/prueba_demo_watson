@@ -1,0 +1,15 @@
+# Copy this file to .env before starting the app.
+# Replace the credentials with your own.
+
+# Watson Speech to Text
+SPEECH_TO_TEXT_APIKEY=AeDYemTb7QeQZ9Qxn3a-sLtDm0B1fkoeh8ZESla1iprk
+SPEECH_TO_TEXT_URL=https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/9a9ffe12-178c-4d15-9c33-a35c00e7c59a
+
+# Watson Text to Speech
+TEXT_TO_SPEECH_APIKEY=xL-dZ3rF8XBa_T3lac75MjndW64afrQQnSDJknz00Vxg
+TEXT_TO_SPEECH_URL=https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/9ba5075c-1b51-4670-b797-e97db9c3e8ad
+
+# Watson Assistant
+ASSISTANT_APIKEY=3-swDSsQUZF7zdD6WvdJiytFMByLszMnMNdFony_jeVT
+ASSISTANT_URL=https://api.us-south.assistant.watson.cloud.ibm.com/instances/ef5834fd-81ad-4671-b873-38b451301ea4
+ASSISTANT_ID=24a24bad-1b8e-4d62-9457-ec1f41b0d6a9
