@@ -25,9 +25,10 @@ function startConversation(){
         console.log('Se creo la sesion')
         var request = new XMLHttpRequest();
         request.open('POST', '/api/watson-assistant', true)
+        var spinner = document.getElementById("spinner");
+        spinner.setAttribute('class','');
         request.onload = function(){
-            addTextMessage(request.response, 'watson')
-            textToSpeech(request.response)
+            textToSpeech(request.response, 'init')
         }
         request.send('')
     }
@@ -110,7 +111,7 @@ function stopRecording() {
             console.log('holaa')
             console.log(request.response)
             if( request.response == "Sorry, didn't get that. please try again!"){
-                textToSpeech(request.response)
+                textToSpeech(request.response,'a')
                 addTextMessage(request.response, 'watson')
             }
             else{
@@ -206,13 +207,12 @@ function sendToWatsonAssistant(message){
     request.onload = function(){
         console.log('YA SE HIZO LO DE WATSON')
         addTextMessage(request.response, 'watson')
-        textToSpeech(request.response)
+        textToSpeech(request.response,'a')
     }
     request.send(message)
 }
 
-function textToSpeech(message){
-    let buf;
+function textToSpeech(message, isInit){
     source = audioCtx.createBufferSource();
     var req = new XMLHttpRequest();
     req.open('POST', '/api/text-to-speech')
@@ -224,6 +224,11 @@ function textToSpeech(message){
             source.buffer = buffer;
             source.connect(audioCtx.destination)
             source.start(0)
+            var spinner = document.getElementById("spinner");
+            spinner.setAttribute('class','hidden');
+            if(isInit == 'init'){
+                addTextMessage(message, 'watson')
+            }
         },
         function(e){
             console.log('ERROR', e.error)
